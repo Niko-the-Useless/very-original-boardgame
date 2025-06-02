@@ -35,8 +35,9 @@ private:
 	bool Athree;
 public:
 	playerHand();
+	std::vector<card> selectCards(std::vector<short> selectedCardIndex);
 	void draw(short ammount, deck& deck);
-	void action(short action);
+	void action(short action, std::vector<card> selectedCards);
 	card show(short index);
 };
 
