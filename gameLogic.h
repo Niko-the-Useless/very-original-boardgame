@@ -33,6 +33,7 @@ private:
 	bool Adiscard;
 	bool AtwoPairs;
 	bool Athree;
+	card secret;
 public:
 	playerHand();
 	std::vector<card> selectCards(std::vector<short> selectedCardIndex);
@@ -45,7 +46,7 @@ class geisha {
 private:
 	short value, color, favor;
 	std::	vector<card> p1Gifts;
-	std::vector<card> p2Gifts;
+	std:: vector<card> p2Gifts;
 public:
 	geisha();
 	geisha(short value_, short color_, short favor_);
@@ -55,4 +56,5 @@ public:
 	short getFavor() const;
 	void addGift(short player, card gift);
 	void calcFavor();
+	std::vector<card> showGifts(short player);
 };

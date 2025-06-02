@@ -81,6 +81,8 @@ void playerHand::action(short action, std::vector<card> selectedCards){
 	switch (action){
 		case SECRET:
 		Asecret=1;
+		secret=selectedCards.back();
+		selectedCards.pop_back();
 		case DISCARD:
 		Adiscard=1;
 		case TWOPAIR:
@@ -118,4 +120,9 @@ void geisha::calcFavor(){
 	}
 	if (p1Favor>p2Favor){favor=P1;}
 	else if (p1Favor<p2Favor){favor=P2;}
+}
+
+std::vector<card> geisha::showGifts(short player){
+	if (player==P1){return p1Gifts;}
+	else {return p2Gifts;}
 }
