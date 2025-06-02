@@ -40,17 +40,18 @@ public:
 	card show(short index);
 };
 
-class geish {
+class geisha {
 private:
 	short value, color, favor;
 	std::	vector<card> p1Gifts;
 	std::vector<card> p2Gifts;
 public:
-	geish();
-	geish(short value_, short color_, short favor_);
+	geisha();
+	geisha(short value_, short color_, short favor_);
+	void setFavor(short);
 	short getValue() const;
 	short getColor() const;
 	short getFavor() const;
-	void setFavor(short);
 	void addGift(short player, card gift);
+	void calcFavor();
 };

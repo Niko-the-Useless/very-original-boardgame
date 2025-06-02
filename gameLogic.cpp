@@ -13,24 +13,38 @@ short card::getValue() const {return value;}
 
 short card::getColor() const {return color;}
 
-geish::geish():value(0), color(0), favor(0){}
+geisha::geisha():value(0), color(0), favor(0){}
 
-geish::geish(short value_, short color_, short favor_): value(value_), color(color_), favor(favor_){}
+geisha::geisha(short value_, short color_, short favor_): value(value_), color(color_), favor(favor_){}
 
-short geish::getValue() const {return value;}
+short geisha::getValue() const {return value;}
 
-short geish::getColor() const {return color;}
+short geisha::getColor() const {return color;}
 
-short geish::getFavor() const {return favor;}
+short geisha::getFavor() const {return favor;}
 
-void geish::setFavor(short player){favor=player;}
+void geisha::setFavor(short player){favor=player;}
 
-void geish::addGift(short player, card gift){
+void geisha::addGift(short player, card gift){
 	if (player==P1){
 		p1Gifts.push_back(gift);
 	} else if (player==P2){
 		p2Gifts.push_back(gift);
 	}
+}
+
+void geisha::calcFavor(){
+	short p1Favor=0, p2Favor=0;
+	while (p1Gifts.empty()!=true){
+		p1Favor=p1Favor+p1Gifts.back().getValue();
+		p1Gifts.pop_back();
+	}
+	while (p2Gifts.empty()!=true){
+		p2Favor=p2Favor+p2Gifts.back().getValue();
+		p2Gifts.pop_back();
+	}
+	if (p1Favor>p2Favor){favor=P1;}
+	else if (p1Favor<p2Favor){favor=P2;}
 }
 
 deck::deck(){
