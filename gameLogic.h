@@ -58,3 +58,14 @@ public:
 	void calcFavor();
 	std::vector<card> showGifts(short player);
 };
+
+class actionData{
+private:
+	std::vector<card> stack;
+	short action;
+public:
+	actionData();
+	actionData(std::vector<card> stack_, short action_);
+	std::vector<card> getStack()const;
+	short getAction()const;
+};

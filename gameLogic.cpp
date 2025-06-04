@@ -10,7 +10,6 @@ short card::getValue() const {return value;}
 short card::getColor() const {return color;}
 
 //-------------deck--------------
-
 deck::deck(){
 	short index=0;
 	while (index<=1){
@@ -126,3 +125,9 @@ std::vector<card> geisha::showGifts(short player){
 	if (player==P1){return p1Gifts;}
 	else {return p2Gifts;}
 }
+
+//-----------action-------------------
+actionData::actionData():stack(), action(0){}
+actionData::actionData(std::vector<card> stack_, short action_):stack(stack_), action(action_){}
+std::vector<card> actionData::getStack()const{return stack;}
+short actionData::getAction()const{return action;}
