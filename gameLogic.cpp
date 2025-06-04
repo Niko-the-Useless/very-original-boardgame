@@ -55,7 +55,7 @@ card deck::draw(){
 }
 
 //-------------hand--------------
-playerHand::playerHand():Asecret(0),Adiscard(0),AtwoPairs(0), Athree(0){};
+playerHand::playerHand():actionTokens{0,0,0,0}{};
 void playerHand::draw(short ammount, deck& deck){
 	for (int i=0;i<ammount;){
 		hand.push_back(deck.draw());
@@ -75,22 +75,18 @@ std::vector<card> playerHand::selectCards(std::vector<short> selectedCardIndex){
 	}
 	return selectedCards;
 }
-
-void playerHand::action(short action, std::vector<card> selectedCards){
+/*
+actionData playerHand::action(short action, std::vector<card> selectedCards){
 	switch (action){
 		case SECRET:
-		Asecret=1;
 		secret=selectedCards.back();
 		selectedCards.pop_back();
 		case DISCARD:
-		Adiscard=1;
 		case TWOPAIR:
-		AtwoPairs=1;
 		case THREE:
-		Athree=1;
 	}
 }
-
+*/
 //-------------------geisha--------------
 geisha::geisha():value(0), color(0), favor(0){}
 geisha::geisha(short value_, short color_, short favor_): value(value_), color(color_), favor(favor_){}
@@ -131,3 +127,14 @@ actionData::actionData():stack(), action(0){}
 actionData::actionData(std::vector<card> stack_, short action_):stack(stack_), action(action_){}
 std::vector<card> actionData::getStack()const{return stack;}
 short actionData::getAction()const{return action;}
+
+//-----------board--------------------
+board::board() {
+	geishaArr.push_back(geisha(2, RED, 0));
+	geishaArr.push_back(geisha(2, ORANGE, 0));
+	geishaArr.push_back(geisha(3, YELLOW, 0));
+	geishaArr.push_back(geisha(3, BLUE, 0));
+	geishaArr.push_back(geisha(4, GREEN, 0));
+	geishaArr.push_back(geisha(2, PURPLE, 0));
+}
+geisha board::show(short index){return geishaArr[index];}

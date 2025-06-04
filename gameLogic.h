@@ -5,6 +5,12 @@
 #define THREE 4
 #define P1 1 
 #define P2 2
+#define RED 0
+#define ORANGE 1
+#define YELLOW 2 
+#define BLUE 3
+#define GREEN 4
+#define PURPLE 5
 
 class card {
 private: 
@@ -15,6 +21,17 @@ public:
 	short getId() const;
 	short getValue() const;
 	short getColor() const;
+};
+
+class actionData{
+private:
+	std::vector<card> stack;
+	short action;
+public:
+	actionData();
+	actionData(std::vector<card> stack_, short action_);
+	std::vector<card> getStack()const;
+	short getAction()const;
 };
 
 class deck {
@@ -29,16 +46,13 @@ public:
 class playerHand {
 private:
 	std::vector<card> hand;
-	bool Asecret;
-	bool Adiscard;
-	bool AtwoPairs;
-	bool Athree;
+	bool actionTokens[4];
 	card secret;
 public:
 	playerHand();
 	std::vector<card> selectCards(std::vector<short> selectedCardIndex);
 	void draw(short ammount, deck& deck);
-	void action(short action, std::vector<card> selectedCards);
+	actionData action(short action, std::vector<card> selectedCards);
 	card show(short index);
 };
 
@@ -59,13 +73,10 @@ public:
 	std::vector<card> showGifts(short player);
 };
 
-class actionData{
+class board {
 private:
-	std::vector<card> stack;
-	short action;
+	std::vector<geisha> geishaArr;
 public:
-	actionData();
-	actionData(std::vector<card> stack_, short action_);
-	std::vector<card> getStack()const;
-	short getAction()const;
+	board();
+	geisha show(short index);
 };
