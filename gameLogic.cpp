@@ -2,6 +2,7 @@
 #include <random>
 #include <algorithm>
 #include <vector>
+
 //-------------card--------------
 card::card():id(0), value(0), color(0){}
 card::card(short id_, short value_, short color_): id(id_), value(value_), color(color_){}
